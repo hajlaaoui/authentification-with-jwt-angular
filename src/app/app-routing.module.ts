@@ -22,7 +22,7 @@ const routes: Routes = [
    { path: 'user', component: BoardUserComponent },
    { path: 'mod', component: BoardModeratorComponent },
    { path: 'admin', component: BoardAdminComponent },
-   { path: 'home/listuser', component:ListComponent },
+   { path: 'listuser', component:ListComponent },
    { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

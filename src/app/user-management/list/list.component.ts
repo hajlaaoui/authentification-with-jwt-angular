@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Table } from 'primeng/table';
+import { User } from 'src/app/_modele/user';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserManagementService } from '../service/user-management.service';
+import { UserManagementService } from 'src/app/_services/user-management.service';
+
 
 @Component({
   selector: 'app-list',
@@ -9,19 +12,20 @@ import { UserManagementService } from '../service/user-management.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
+  data: any;
+ 
+ 
   constructor(private user:UserManagementService,private tokenStorage: TokenStorageService) {
     this.user.allusers();
    }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
-    }
+ this.user.allusers().subscribe(data => {
+   this.data = data
+console.log(data);
+ })
   }
-
+  clear(table: Table) {
+    table.clear();
+}
 }
