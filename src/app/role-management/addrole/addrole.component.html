@@ -8,46 +8,44 @@
         novalidate
       >
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="roleName">role name</label>
           <input
             type="text"
             class="form-control"
-            name="username"
-            [(ngModel)]="form.username"
+            name="role name"
+            [(ngModel)]="form.roleName"
             required
             minlength="3"
             maxlength="20"
-            #username="ngModel"
+            #rolename="ngModel"
           />
-          <div class="alert-danger" *ngIf="username.errors && f.submitted">
-            <div *ngIf="username.errors.required">Username is required</div>
-            <div *ngIf="username.errors.minlength">
+          <div class="alert-danger" *ngIf="rolename.errors && f.submitted">
+            <div *ngIf="rolename.errors.required">role name is required</div>
+            <div *ngIf="rolename.errors.minlength">
               Username must be at least 3 characters
             </div>
-            <div *ngIf="username.errors.maxlength">
+            <div *ngIf="rolename.errors.maxlength">
               Username must be at most 20 characters
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="email">email</label>
+          <label for="description">description</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
-            name="email"
+            name="description"
             [(ngModel)]="form.email"
             required
-            #email="ngModel"
-            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            #description="ngModel"
             
           />
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="email.errors && f.submitted"
+            *ngIf="description.errors && f.submitted"
           >
-            <div  *ngIf="email.errors.required">email is required</div>
-            <div  *ngIf="email.invalid">you have to add valid email</div>
+            <div  *ngIf="description.errors.required">description is required</div>
           </div>
         </div>
         <!-- <div class="form-group">
@@ -68,24 +66,7 @@
             </div>
           </div>
         </div> -->
-        <div *ngIf="!code" class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            [(ngModel)]="form.password"
-            required
-            minlength="6"
-            #password="ngModel"
-          />
-          <div class="alert-danger" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>
-        </div>
+     
         <!--  For role when it be rady!!!!!!!!!!!!!!!!!!!!!!!!!
           
           <div class="form-group">
@@ -96,18 +77,15 @@
 							</ng-template>
 						</p-dropdown> 
         </div> -->
-        <div *ngIf="!code" class="form-group">
+        <div class="form-group">
           <button class="btn btn-primary btn-block" (click)="onSubmit()" >Sign Up</button>
         </div>
-        <div *ngIf="code" class="form-group">
-          <button class="btn btn-primary btn-block" (click)="onSave()">Save</button>
-        </div>
-        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Signup failed!<br />{{ errorMessage }}
+        <div class="alert alert-warning" *ngIf="f.submitted">
+          added role failed!<br />{{ errorMessage }}
         </div>
       </form>
       <div class="alert alert-success" *ngIf="isSuccessful">
-        Your registration is successful!
+        Your role added successful!
       </div>
     </div>
   </div>

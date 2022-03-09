@@ -1,0 +1,72 @@
+<div class="card">
+  <p-table
+    #dt2
+    [value]="listRole"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    class="p-datatable-customers"
+    [loading]="loading"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    [globalFilterFields]="['roleName', 'roleDescription']"
+    [(selection)]="selectedItems"
+    selectionMode="single"
+    [contextMenu]="cm"
+    (onRowSelect)="onSelectionChange()"
+    (onRowUnselect)="onSelectionChange()"
+    (onContextMenuSelect)="onSelectionChange()"
+    [(contextMenuSelection)]="selectedItems"
+  >
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex">
+        <span class="p-input-icon-left p-ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (change)="inp($event)"
+            placeholder="Search keyword"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>role Name</th>
+        <th>description</th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="data.roleName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="data.roleDescription"
+          ></p-columnFilter>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+      <tr [pContextMenuRow]="customer" [pSelectableRow]="customer">
+        <td>
+          {{ customer.roleName }}
+        </td>
+        <td>
+          <span class="image-text">{{ customer.roleDescription }}</span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No data found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-contextMenu #cm [model]="rowOperations" appendTo="body"></p-contextMenu>
+
+
+
+

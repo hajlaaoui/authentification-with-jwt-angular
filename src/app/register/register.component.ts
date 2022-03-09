@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
+import { UserManagementService } from '../_services/user-management.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,10 +16,32 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  constructor(private authService: AuthService,private router:Router) { }
+  listRole: any;
+  code: any;
+  constructor(
+    private authService: AuthService,
+    private router:Router,
+    private user:UserManagementService,
+    private activerout:ActivatedRoute
+    ) { }
   ngOnInit(): void {
+    if(this.activerout.snapshot.queryParams.code){
+      this.code=this.activerout.snapshot.queryParams.code
+      this.user.getUserById(this.code).subscribe(data=>{
+        console.log(data);
+        this.form.email=data.email;
+        this.form.username=data.username;
+        
+      })
+    }
+    this.user.getRole().subscribe(e=>{
+      this.listRole=e
+    })
+    
+    
   }
   onSubmit(): void {
+    
     const { username, email, password } = this.form;
     this.authService.register(this.form).subscribe(
       data => {
@@ -35,5 +58,9 @@ export class RegisterComponent implements OnInit {
   }
   redirecttologin(){
     this.router.navigate(['/login'])
+  }
+  onSave(){
+    console.log("click save", this.form);
+    
   }
 }

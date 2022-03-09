@@ -4,16 +4,29 @@ import { User } from '../_modele/user';
 import { TokenStorageService } from './token-storage.service';
 const AUTH_API = 'http://localhost:8085';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserManagementService {
-
-  constructor(private http : HttpClient, private tokenStorage: TokenStorageService) { }
-  allusers(){
-    return this.http.get<any[]>(AUTH_API+ '/retrieves-all-users',httpOptions );
-        
-     }
+  constructor(
+    private http: HttpClient,
+    private tokenStorage: TokenStorageService
+  ) {}
+  allusers() {
+    return this.http.get<any[]>(AUTH_API + '/retrieves-all-users', httpOptions);
+  }
+  getRole() {
+    return this.http.get<any[]>(AUTH_API + '/retrieves-all-role', httpOptions);
+  }
+  getUserById(id: any) {
+    return this.http.get<User>(AUTH_API + '/UserById/' + id, httpOptions);
+  }
+  getByUsername() {
+    return this.http.get<any>(AUTH_API + '/currentUser', httpOptions);
+  }
+  delteuserById(id : number) {
+    return this.http.delete(AUTH_API + '/delete-user/'+id,httpOptions);
+  }
 }

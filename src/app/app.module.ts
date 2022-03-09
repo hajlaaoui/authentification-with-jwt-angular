@@ -19,6 +19,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ListComponent } from './user-management/list/list.component';
 import { DeleteComponent } from './user-management/delete/delete.component';
 import { DetailsComponent } from './user-management/details/details.component';
+import { ListRoleComponent } from './role-management/list-role/list-role.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 
 import {TableModule} from 'primeng/table';
@@ -34,6 +35,14 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import {InputTextModule} from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MenuItem} from 'primeng/api';
+import { AddroleComponent } from './role-management/addrole/addrole.component';
+import { ListrapportComponent } from './rapport-management/listrapport/listrapport.component';
+import { AddrapportComponent } from './rapport-management/addrapport/addrapport.component';
+import { AddTempComponent } from './TempEmail-management/add-temp/add-temp.component';
+import { ListTempComponent } from './TempEmail-management/list-temp/list-temp.component';
+import { ViewTempComponent } from './TempEmail-management/view-temp/view-temp.component';
+import { ListfamillepieceComponent } from './famillepiece-management/listfamillepiece/listfamillepiece.component';
+import { AddfamillepieceComponent } from './famillepiece-management/addfamillepiece/addfamillepiece.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +58,15 @@ import {MenuItem} from 'primeng/api';
     ListComponent,
     DeleteComponent,
     DetailsComponent,
+    ListRoleComponent,
+    AddroleComponent,
+    ListrapportComponent,
+    AddrapportComponent,
+    AddTempComponent,
+    ListTempComponent,
+    ViewTempComponent,
+    ListfamillepieceComponent,
+    AddfamillepieceComponent,
    
 
     
