@@ -4,6 +4,8 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { ConfComponent } from './conf/conf.component';
+import { AddfamillepieceComponent } from './famillepiece-management/addfamillepiece/addfamillepiece.component';
+import { ListfamillepieceComponent } from './famillepiece-management/listfamillepiece/listfamillepiece.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -37,6 +39,8 @@ const routes: Routes = [
    { path: 'addTemEmail', component:AddTempComponent },
    { path: 'listtemp', component:ListTempComponent },
    { path: 'viewtemp', component:ViewTempComponent },
+   { path: 'addfammilepiece', component:AddfamillepieceComponent },
+   { path: 'listfammilepiece', component:ListfamillepieceComponent },
   //  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

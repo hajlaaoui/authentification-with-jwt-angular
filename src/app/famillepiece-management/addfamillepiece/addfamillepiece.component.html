@@ -1,0 +1,93 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username">nom famille piece</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nom fammille piece"
+            [(ngModel)]="form.nomFamillePiece"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">fammilly of part is required</div>
+            <div *ngIf="username.errors.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username.errors.maxlength">
+              Username must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            [(ngModel)]="form.description"
+            required
+            #description="ngModel"
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="description.errors && f.submitted"
+          >
+            <div  *ngIf="description.errors.required">description is required</div>
+            
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div> -->
+    
+        <!--  For role when it be rady!!!!!!!!!!!!!!!!!!!!!!!!!
+          
+          <div class="form-group">
+        <p-dropdown [(ngModel)]="form.role" [options]="listRole" (onChange)="filter($event.value)"
+							placeholder="Any" [showClear]="true">
+							<ng-template let-option pTemplate="item">
+								<span [class]="'customer-badge status-' + option.roleName">{{option.roleName}}</span>
+							</ng-template>
+						</p-dropdown> 
+        </div> -->
+        <div *ngIf="!code" class="form-group">
+          <button class="btn btn-primary btn-block" (click)="onSubmit()" >ajouter fammile piece</button>
+        </div>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Echec ajout!<br />{{ errorMessage }}
+        </div>
+      </form>
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Votre ajout a réussi!
+      </div>
+    </div>
+  </div>

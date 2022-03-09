@@ -34,7 +34,6 @@ import {DropdownModule} from 'primeng/dropdown';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {InputTextModule} from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MenuItem} from 'primeng/api';
 import { AddroleComponent } from './role-management/addrole/addrole.component';
 import { ListrapportComponent } from './rapport-management/listrapport/listrapport.component';
 import { AddrapportComponent } from './rapport-management/addrapport/addrapport.component';
@@ -43,6 +42,8 @@ import { ListTempComponent } from './TempEmail-management/list-temp/list-temp.co
 import { ViewTempComponent } from './TempEmail-management/view-temp/view-temp.component';
 import { ListfamillepieceComponent } from './famillepiece-management/listfamillepiece/listfamillepiece.component';
 import { AddfamillepieceComponent } from './famillepiece-management/addfamillepiece/addfamillepiece.component';
+import { AddetapetestComponent } from './etapetest-management/addetapetest/addetapetest.component';
+import { ListetapetestComponent } from './etapetest-management/listetapetest/listetapetest.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,8 @@ import { AddfamillepieceComponent } from './famillepiece-management/addfamillepi
     ViewTempComponent,
     ListfamillepieceComponent,
     AddfamillepieceComponent,
+    AddetapetestComponent,
+    ListetapetestComponent,
    
 
     
