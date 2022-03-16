@@ -44,6 +44,11 @@ import { ListfamillepieceComponent } from './famillepiece-management/listfamille
 import { AddfamillepieceComponent } from './famillepiece-management/addfamillepiece/addfamillepiece.component';
 import { AddetapetestComponent } from './etapetest-management/addetapetest/addetapetest.component';
 import { ListetapetestComponent } from './etapetest-management/listetapetest/listetapetest.component';
+import { AddwizardComponent } from './wizard-management/addwizard/addwizard.component';
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +75,7 @@ import { ListetapetestComponent } from './etapetest-management/listetapetest/lis
     AddfamillepieceComponent,
     AddetapetestComponent,
     ListetapetestComponent,
+    AddwizardComponent,
    
 
     
@@ -94,7 +100,8 @@ import { ListetapetestComponent } from './etapetest-management/listetapetest/lis
     DropdownModule,
     ProgressBarModule,
     InputTextModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgWizardModule.forRoot(ngWizardConfig),
     
   ],
   providers: [authInterceptorProviders],
