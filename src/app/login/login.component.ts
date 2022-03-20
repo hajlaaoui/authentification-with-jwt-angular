@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     );
   }
   reloadPage(): void {
-    this.router.navigate(["/home"]) ;
+    this.router.navigate(["/"]) ;
   }
   doregister(){
     this.router.navigate(["/register"]) ;

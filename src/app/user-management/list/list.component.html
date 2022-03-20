@@ -16,13 +16,14 @@
     (onRowSelect)="onSelectionChange()"
     (onRowUnselect)="onSelectionChange()"
     (onContextMenuSelect)="onSelectionChange()"
-    [(contextMenuSelection)]="selectedItems"
+    [globalFilterFields]="['username','email']"
   >
     <ng-template pTemplate="caption">
       <div class="p-d-flex">
         <span class="p-input-icon-left p-ml-auto">
           <i class="pi pi-search"></i>
-          <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Filter" />
+          <input type="text" pInputText size="50" placeholder="Global Filter"
+          style="width:auto" (keyup)="onKey($event)" (input)="dt2.filterGlobal($event.target, 'contains')">
         </span>
       </div>
     </ng-template>

@@ -8,6 +8,7 @@ import { AddfamillepieceComponent } from './famillepiece-management/addfamillepi
 import { ListfamillepieceComponent } from './famillepiece-management/listfamillepiece/listfamillepiece.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AddmodeleComponent } from './modele-management/addmodele/addmodele.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddrapportComponent } from './rapport-management/addrapport/addrapport.component';
 import { RegisterComponent } from './register/register.component';
@@ -18,6 +19,7 @@ import { ListTempComponent } from './TempEmail-management/list-temp/list-temp.co
 import { ViewTempComponent } from './TempEmail-management/view-temp/view-temp.component';
 import { DeleteComponent } from './user-management/delete/delete.component';
 import { ListComponent } from './user-management/list/list.component' ;
+import { AddwizardComponent } from './wizard-management/addwizard/addwizard.component';
 
 const routes: Routes = [
  
@@ -41,6 +43,8 @@ const routes: Routes = [
    { path: 'viewtemp', component:ViewTempComponent },
    { path: 'addfammilepiece', component:AddfamillepieceComponent },
    { path: 'listfammilepiece', component:ListfamillepieceComponent },
+   { path: 'addwizard', component:AddwizardComponent },
+   { path: 'addmodele', component:AddmodeleComponent },
   //  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

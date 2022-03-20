@@ -46,6 +46,8 @@ import { AddetapetestComponent } from './etapetest-management/addetapetest/addet
 import { ListetapetestComponent } from './etapetest-management/listetapetest/listetapetest.component';
 import { AddwizardComponent } from './wizard-management/addwizard/addwizard.component';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { AddmodeleComponent } from './modele-management/addmodele/addmodele.component';
+import { ListmodeleComponent } from './modele-management/listmodele/listmodele.component';
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
 };
@@ -76,6 +78,8 @@ const ngWizardConfig: NgWizardConfig = {
     AddetapetestComponent,
     ListetapetestComponent,
     AddwizardComponent,
+    AddmodeleComponent,
+    ListmodeleComponent,
    
 
     

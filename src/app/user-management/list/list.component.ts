@@ -22,6 +22,8 @@ export class ListComponent implements OnInit {
   rowOperations: MenuItem[] |any;
   display: boolean = false;
   dt: any;
+  press:any
+  tableHeaders:any
   constructor(private user:UserManagementService,
     private tokenStorage: TokenStorageService,
     private router:Router) {
@@ -106,10 +108,9 @@ deleteuser(id : number){
   this.user.delteuserById(id).subscribe(data =>{ console.log(data)});
   this.refresh();
 }
-applyFilterGlobal($event :any, stringVal:any) {
-  this.dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
-}
+
 refresh(): void {
   window.location.reload();
 }
+onKey(event:any) {const inputValue = event.target.value;}
 }
