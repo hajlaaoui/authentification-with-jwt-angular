@@ -49,6 +49,17 @@
             <div  *ngIf="description.errors.required">description is required</div>
             
           </div>
+          <br>
+          <p-dropdown
+          [options]="data"
+          optionLabel="nomModele"
+          optionValue="idModele"
+          placeholder="Modele"
+          [showClear]="true">
+          <ng-template let-option pTemplate="item">
+            <span [class]="'customer-badge status-' + option.nomModele">{{option.nomModele}}</span>
+          </ng-template>
+        </p-dropdown>
         </div>
         <!-- <div class="form-group">
           <label for="email">Email</label>
@@ -79,9 +90,11 @@
 							</ng-template>
 						</p-dropdown> 
         </div> -->
+     
         <div *ngIf="!code" class="form-group">
           <button class="btn btn-primary btn-block" (click)="onSubmit()" >ajouter fammile piece</button>
         </div>
+  
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         Echec ajout!<br />{{ errorMessage }}
         </div>

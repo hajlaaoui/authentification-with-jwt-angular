@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FamillepieceService } from 'src/app/_services/famillepiece.service';
+import { ModeleManagementService } from 'src/app/_services/modele-management.service';
 
 @Component({
   selector: 'app-addfamillepiece',
@@ -17,11 +18,16 @@ export class AddfamillepieceComponent implements OnInit {
   errorMessage = '';
   listRole: any;
   code: any;
-  constructor(private famillepieceservice:FamillepieceService) { }
+  data: any 
+  selectedCity: any[] | undefined ;
+  constructor(private famillepieceservice:FamillepieceService,private modeleservice:ModeleManagementService) { }
   refresh(){
     window.location.reload()
   }
   ngOnInit(): void {
+    this.modeleservice.getallmodele().subscribe(data =>{
+      this.data = data
+    })
 
   }
   onSubmit(): void {

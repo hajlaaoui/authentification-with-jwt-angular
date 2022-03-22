@@ -17,4 +17,7 @@ export class ModeleManagementService {
       detailsModele
     }, httpOptions);
   }
+  getallmodele(){
+    return this.http.get<any>(AUTH_API+"/retrieves-all-modele",httpOptions);
+  }
 }

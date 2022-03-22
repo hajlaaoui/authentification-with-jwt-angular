@@ -12,7 +12,7 @@ import { Table } from 'primeng/table';
 export class ListTempComponent implements OnInit {
   data: any;
   selectedItems:any
- listRole:any;
+  listRole:any;
   loading: boolean = true;
   rowOperations: MenuItem[] |any;
   display: boolean = false;
@@ -77,7 +77,6 @@ this.router.navigate(['/viewtemp'], {
 }
 doEdit(){
 console.log("EDIT");
-
 }
 doDelete(){
 

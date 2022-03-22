@@ -12,12 +12,12 @@ import { Table } from 'primeng/table';
 export class ListfamillepieceComponent implements OnInit {
   data: any;
   selectedItems:any
- listRole:any;
+  listRole:any;
   loading: boolean = true;
   rowOperations: MenuItem[] |any;
   display: boolean = false;
   dt: any;
-  constructor(private fammillepieceservice:FamillepieceService,  private router:Router) { }
+  constructor(private fammillepieceservice:FamillepieceService,  public router:Router) { }
 
   ngOnInit(): void {
     this.services()
@@ -26,7 +26,9 @@ export class ListfamillepieceComponent implements OnInit {
   showDialog() {
     this.display = true;
 }
-rows() {
+rows() { if(this.router.url === '/listfammilepiece'){
+  
+
   this.rowOperations = [
     {
       label: 'View',
@@ -50,6 +52,18 @@ rows() {
       command: (event:any) => this.doDelete(),
     },
   ]
+} else {
+  this.rowOperations = [
+    {
+      label: 'Détails',
+      icon: '',
+     
+      command: (event:any) => this.doView(),
+    }
+  ]
+  
+  
+}
 }
 services() {
   this.fammillepieceservice.getallfammillepiece().subscribe(data => {
@@ -97,5 +111,7 @@ this.dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
 refresh(): void {
 window.location.reload();
 }
-
+isHomeRoute() {
+  return this.router.url === '/';
+}
 }

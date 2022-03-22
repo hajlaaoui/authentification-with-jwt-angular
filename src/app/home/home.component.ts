@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmailEditorComponent } from 'angular-email-editor';
+import { RoleManagementService } from '../_services/role-management.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserManagementService } from '../_services/user-management.service';
 import { UserService } from '../_services/user.service';
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
-    private usermanagementservice: UserManagementService
+    private usermanagementservice: UserManagementService,
+    private roleservice : RoleManagementService
     ) { }
     
   ngOnInit(): void {

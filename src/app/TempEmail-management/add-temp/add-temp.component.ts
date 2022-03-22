@@ -14,6 +14,7 @@ export class AddTempComponent implements OnInit {
   errorMessage = '';
   isSuccessful = false;
   code: any;
+  editorResult: any;
 
   constructor(private tempEmailService:TempemailService,private router:Router) { }
   form: any = {
@@ -40,7 +41,10 @@ export class AddTempComponent implements OnInit {
   }
 
   exportHtml() {
-    this.emailEditor.exportHtml((data:any) =>   this.tempEmailService.addTemp(JSON.stringify(data.design)).subscribe());
+    this.emailEditor.exportHtml((data:any) => 
+      this.tempEmailService.addTemp(JSON.stringify(data.design)).subscribe()
+     );
+  
     this.refresh();
   }
   saveDesign() {

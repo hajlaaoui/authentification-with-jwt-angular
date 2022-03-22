@@ -21,7 +21,7 @@ export class FamillepieceService {
 
 console.log(AUTH_API);
 
-    return this.http.post(AUTH_API + '/save-Famillepiece',body, {
+    return this.http.post(AUTH_API + '/save-Famillepiece/',body, {
       
     });
   }

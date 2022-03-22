@@ -17,7 +17,7 @@ import { UserManagementService } from 'src/app/_services/user-management.service
 export class ListComponent implements OnInit {
   data: any;
   selectedItems:any
- listRole:any;
+  listRole:any;
   loading: boolean = true;
   rowOperations: MenuItem[] |any;
   display: boolean = false;

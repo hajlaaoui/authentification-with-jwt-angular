@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
     password: null,
     email : null
   };
+  @Input()
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
     );
   }
   reloadPage(): void {
-    this.router.navigate(["/"]) ;
+    
+    this.router.navigateByUrl("") ;
   }
   doregister(){
     this.router.navigate(["/register"]) ;

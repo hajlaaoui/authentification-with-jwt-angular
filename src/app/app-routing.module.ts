@@ -9,6 +9,7 @@ import { ListfamillepieceComponent } from './famillepiece-management/listfamille
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AddmodeleComponent } from './modele-management/addmodele/addmodele.component';
+import { ListmodeleComponent } from './modele-management/listmodele/listmodele.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddrapportComponent } from './rapport-management/addrapport/addrapport.component';
 import { RegisterComponent } from './register/register.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
    { path: 'listfammilepiece', component:ListfamillepieceComponent },
    { path: 'addwizard', component:AddwizardComponent },
    { path: 'addmodele', component:AddmodeleComponent },
+   { path: 'listmodele', component:ListmodeleComponent },
   //  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
