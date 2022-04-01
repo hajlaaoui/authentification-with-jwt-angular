@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { UserManagementService } from '../_services/user-management.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,13 +19,20 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  username:string |undefined
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-    private router:Router    
+    private router:Router ,private userservice:UserManagementService   
     ) { }
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      this.userservice.getByUsername().subscribe(data => {
+        this.username = data.username
+        console.log(this.username);
+     
+        
+       });
     }
   }
   onSubmit(): void {
@@ -46,7 +54,8 @@ export class LoginComponent implements OnInit {
   }
   reloadPage(): void {
     
-    this.router.navigateByUrl("") ;
+    this.router.navigateByUrl("/mod") ;
+    window.location.reload()
   }
   doregister(){
     this.router.navigate(["/register"]) ;

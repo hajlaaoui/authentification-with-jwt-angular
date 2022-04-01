@@ -3,16 +3,17 @@
     
         <ng-wizard-step [title]="'Step 1'" [description]="'Step 1: Selection du famille piece'"
         [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
-      <app-listfamillepiece></app-listfamillepiece>
+      <app-listfamillepiece (datafamillylist)="getlistfamilly($event)"></app-listfamillepiece>
         </ng-wizard-step>
         
-        <ng-wizard-step [title]="'Step 2'" [description]="'Step 2: détails model'">
-        <app-listmodele></app-listmodele>
+        <ng-wizard-step  [title]="'Step 2'" [description]="'Step 2: détails model'">
+        <div *ngIf="modele">
+        <app-listmodele  [getmodel]="modele"></app-listmodele>
+        </div>
         </ng-wizard-step>
         
         <ng-wizard-step [title]="'Step 3'" [description]="'Step 3: validation rapport'"
         [canEnter]="isValidFunctionReturnsObservable.bind(this)" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
-        <app-add-temp></app-add-temp>>
         </ng-wizard-step>
     
     <ng-wizard-step [title]="'Step 4'" [description]="'Step 4 description'">

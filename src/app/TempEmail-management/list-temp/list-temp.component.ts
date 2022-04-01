@@ -20,8 +20,9 @@ export class ListTempComponent implements OnInit {
   constructor(private tempemailservice:TempemailService,private router:Router) { }
 
   ngOnInit(): void {
-    this.services();
     this.rows();
+    this.services();
+  
   }
   showDialog() {
     this.display = true;

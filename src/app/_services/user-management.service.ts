@@ -26,6 +26,9 @@ export class UserManagementService {
   getByUsername() {
     return this.http.get<any>(AUTH_API + '/currentUser', httpOptions);
   }
+  getCurrentRole() {
+    return this.http.get<any>(AUTH_API + '/currentRoleUser', httpOptions);
+  }
   delteuserById(id : number) {
     return this.http.delete(AUTH_API + '/delete-user/'+id,httpOptions);
   }

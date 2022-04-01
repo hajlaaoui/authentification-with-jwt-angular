@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng-lts/api';
 import { FamillepieceService } from 'src/app/_services/famillepiece.service';
@@ -17,6 +17,7 @@ export class ListfamillepieceComponent implements OnInit {
   rowOperations: MenuItem[] |any;
   display: boolean = false;
   dt: any;
+  @Output() datafamillylist = new EventEmitter()
   constructor(private fammillepieceservice:FamillepieceService,  public router:Router) { }
 
   ngOnInit(): void {
@@ -99,7 +100,15 @@ this.showDialog();
 
 }
 onSelectionChange(){
+  //console.log(JSON.parse(this.selectedItems.modele))
+  console.log(this.selectedItems)
+  if(this?.selectedItems && this.selectedItems?.modele){
+    this.datafamillylist.emit(this.selectedItems.modele)
+    console.log(this.selectedItems.modele)
+  }else {
+  console.log("not found model")
 
+  }
 }
 deleteuser(id : number){
 // this.user.delteuserById(id).subscribe(data =>{ console.log(data)});

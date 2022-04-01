@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng-lts/api';
 import { ModeleManagementService } from 'src/app/_services/modele-management.service';
@@ -9,18 +9,22 @@ import { Table } from 'primeng/table';
   styleUrls: ['./listmodele.component.scss']
 })
 export class ListmodeleComponent implements OnInit {
-  data: any;
+  data: any[] | any;
   selectedItems:any
   listRole:any;
   loading: boolean = true;
   rowOperations: MenuItem[] |any;
   display: boolean = false;
   dt: any;
+  @Input() getmodel: any  ;
+  @Output() datatemplemail = new EventEmitter()
   constructor(private modeleservice:ModeleManagementService,private router:Router) { }
 
   ngOnInit(): void {
-    this.rows();
+    console.log(this.getmodel)
     this.services();
+    this.rows();
+  
   }
   showDialog() {
     this.display = true;
@@ -65,12 +69,15 @@ rows() { if(this.router.url === '/listfammilepiece'){
 }
 }
 services() {
-  this.modeleservice.getallmodele().subscribe(data => {
-    this.data = data
-    this.loading=false
- console.log(data);
-  })
- 
+//   this.modeleservice.getallmodele().subscribe(data => {
+//     this.data = data
+//     this.loading=false
+//  console.log(data);
+//   })
+console.log(this.getmodel)
+this.data = []
+ this.data.push(this.getmodel)
+ this.loading=false
 
 }
 clear(table: Table) {
@@ -98,7 +105,14 @@ this.showDialog();
 
 }
 onSelectionChange(){
+  console.log(this.selectedItems)
+  if(this.selectedItems && this.selectedItems.modele){
+    this.datatemplemail.emit(this.selectedItems.modele)
+  }else {
 
+  console.log("not found model")
+
+  }
 }
 deleteuser(id : number){
 // this.user.delteuserById(id).subscribe(data =>{ console.log(data)});

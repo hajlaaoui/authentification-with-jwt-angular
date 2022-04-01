@@ -9,6 +9,7 @@ import { EmailEditorComponent } from 'angular-email-editor';
 })
 export class ViewTempComponent implements OnInit {
   prams1 : string | any
+
   constructor(private route: ActivatedRoute) {
     this.prams1=this.route.snapshot.queryParams.code; 
      console.log(this.prams1)
@@ -19,11 +20,17 @@ export class ViewTempComponent implements OnInit {
   @ViewChild(EmailEditorComponent)
   private emailEditor: EmailEditorComponent = new EmailEditorComponent;
   editorLoaded() {
-    //const json; /* DESIGN JSON GOES HERE */
-    var json = JSON.parse(this.prams1);
-    console.log("josndata"+ json);
-    
-    this.emailEditor.loadDesign(json);
+    try {
+     //const json; /* DESIGN JSON GOES HERE */
+     var json = JSON.parse(this.prams1);
+     console.log("josndata"+ json);
+     
+     this.emailEditor.loadDesign(json);
+    } catch (err:any) {
+      // 👇️ This runs
+      console.log('Error: ', err.message);
+    }
+
   }
   
 

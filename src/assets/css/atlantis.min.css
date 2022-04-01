@@ -7534,16 +7534,7 @@ label.error {
   background: #1572e8 !important;
   border-color: #1572e8 !important;
 }
-.btn-secondary {
-  background: #6861ce !important;
-  border-color: #6861ce !important;
-}
-.btn-secondary:disabled,
-.btn-secondary:focus,
-.btn-secondary:hover {
-  background: #6861ce !important;
-  border-color: #6861ce !important;
-}
+
 .btn-info {
   background: #48abf7 !important;
   border-color: #48abf7 !important;
@@ -7624,10 +7615,7 @@ label.error {
   color: #1572e8 !important;
   border: 1px solid #1572e8 !important;
 }
-.btn-border.btn-secondary {
-  color: #6861ce !important;
-  border: 1px solid #6861ce !important;
-}
+
 .btn-border.btn-info {
   color: #48abf7 !important;
   border: 1px solid #48abf7 !important;
@@ -7673,12 +7661,8 @@ label.error {
 .btn-link.btn-primary:hover {
   color: #1572e8 !important;
 }
-.btn-link.btn-secondary {
-  color: #6861ce !important;
-}
-.btn-link.btn-secondary:hover {
-  color: #6861ce !important;
-}
+
+
 .btn-link.btn-info {
   color: #48abf7 !important;
 }
@@ -8676,7 +8660,7 @@ label.error {
 .btn-default.is-loading:after,
 .btn-info.is-loading:after,
 .btn-primary.is-loading:after,
-.btn-secondary.is-loading:after,
+
 .btn-success.is-loading:after,
 .btn-warning.is-loading:after,
 .card-danger.is-loading:after,
@@ -8706,7 +8690,7 @@ label.error {
 .btn-default.is-loading:after,
 .btn-info.is-loading:after,
 .btn-primary.is-loading:after,
-.btn-secondary.is-loading:after,
+
 .btn-success.is-loading:after,
 .btn-warning.is-loading:after,
 .card-danger.is-loading:after,

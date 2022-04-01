@@ -9,6 +9,8 @@ import { of } from 'rxjs';
 })
 
 export class AddwizardComponent implements OnInit {
+  modele: any;
+
  
   constructor(private ngWizardService: NgWizardService) { }
   stepStates = {
@@ -49,6 +51,11 @@ export class AddwizardComponent implements OnInit {
   isValidFunctionReturnsObservable(args: StepValidationArgs) {
     return of(true);
   }
+  getlistfamilly(e:any){
+    this.modele = undefined
+    this.modele=e
+  }
+ 
  
   ngOnInit(): void {
   }

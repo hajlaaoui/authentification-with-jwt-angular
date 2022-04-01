@@ -41,11 +41,14 @@ export class AddTempComponent implements OnInit {
   }
 
   exportHtml() {
+    
     this.emailEditor.exportHtml((data:any) => 
+    
       this.tempEmailService.addTemp(JSON.stringify(data.design)).subscribe()
      );
+     
   
-    this.refresh();
+   
   }
   saveDesign() {
     this.emailEditor.saveDesign((design) => console.log('saveDesign', design));

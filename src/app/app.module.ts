@@ -49,7 +49,7 @@ import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { AddmodeleComponent } from './modele-management/addmodele/addmodele.component';
 import { ListmodeleComponent } from './modele-management/listmodele/listmodele.component';
 const ngWizardConfig: NgWizardConfig = {
-  theme: THEME.default
+  theme: THEME.circles
 };
 @NgModule({
   declarations: [

@@ -174,7 +174,7 @@
 								<div class="quick-actions-scroll scrollbar-outer">
 									<div class="quick-actions-items">
 										<div class="row m-0">
-											<a class="col-6 col-md-4 p-0" href="#">
+											<a class="col-6 col-md-4 p-0"  href="/addwizard" class="nav-link" routerLink="addwizard">
 												<div class="quick-actions-item">
 													<i class="flaticon-file-1"></i>
 													<span class="text">Generated Report</span>
@@ -218,14 +218,14 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="assets/img/pico.png" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="assets/img/pico.png" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>  {{username}}</h4>
 												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -257,13 +257,13 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="assets/img/pico.png" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									{{username}}
-									<span class="user-level">role</span>
+									<span class="user-level">{{roleuser}}</span>
 								</span>
 							</a>
 							<div class="clearfix"></div>
@@ -271,24 +271,9 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
-								<p>Home</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="dashboard">
-								<ul class="nav nav-collapse">
-								</ul>
-							</div>
-						</li>
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Components</h4>
-						</li>
-						<li class="nav-item">
+				
+						
+						<li *ngIf="roleuser === 'ROLE_Super Admin'" class="nav-item">
 							<a data-toggle="collapse" href="#base">
 								<i class="pi pi-user"></i>
 								<p>Gestion des utilisateurs</p>
@@ -312,8 +297,7 @@
 								</ul>
 							</div>
 						</li>
-						
-						<li class="nav-item">
+						<li *ngIf="roleuser === 'ROLE_Super Admin'"  class="nav-item">
 							<a data-toggle="collapse" href="#sidebarLayouts">
 								<i class="fas fa-th-list"></i>
 								<p>Gestion d'historiques</p>
@@ -330,75 +314,7 @@
 								</ul>
 							</div>
 						</li>
-					
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
-								<p>Gestion des étapes de test</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="forms">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="#">
-											<i class="pi pi-list"></i>
-											<span>List des étapes de test </span>
-										</a>
-									</li>
-									<li>
-										<a href="forms/forms.html">
-											<i class="pi pi-plus-circle"></i>
-											<span>ajouter étapes de test </span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
-								<i class="pi pi-slack"></i>
-								<p>gestion des labo de test</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="tables">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="tables/tables.html">
-											<span class="sub-item">List des tables de test</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span class="sub-item">ajouter une etape de test</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
-								<i class="pi pi-sitemap"></i>
-								<p>Gestion des familles de<br> pièces</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="maps">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="/listfammilepiece" class="nav-link" routerLink="listfammilepiece">
-											<i class="pi pi-list"></i>
-											<span>list familles des pièces</span>
-										</a>
-									</li>
-									<li>
-										<a href="/addfammilepiece" class="nav-link" routerLink="addfammilepiece">
-											<i class="pi pi-plus-circle"></i>
-											<span>ajouter une famille de piece</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
+						<li *ngIf="roleuser === 'ROLE_Admin'" class="nav-item">
 							<a data-toggle="collapse" href="#charts">
 								<i class="flaticon-file-1"></i>
 								<p>gestion des templates </p>
@@ -421,15 +337,124 @@
 								</ul>
 							</div>
 						</li>
+						<li *ngIf="roleuser === 'ROLE_Admin'" class="nav-item">
+							<a data-toggle="collapse" href="#maps">
+								<i class="pi pi-sitemap"></i>
+								<p>Gestion des familles de<br> pièces</p>
+								<span class="caret"></span>
+							</a>
+							<div  class="collapse" id="maps">
+								<ul  class="nav nav-collapse">
+									<li>
+										<a href="/listfammilepiece" class="nav-link" routerLink="listfammilepiece">
+											<i class="pi pi-list"></i>
+											<span>list familles des pièces</span>
+										</a>
+									</li>
+									<li>
+										<a href="/addfammilepiece" class="nav-link" routerLink="addfammilepiece">
+											<i class="pi pi-plus-circle"></i>
+											<span>ajouter une famille de piece</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li *ngIf="roleuser === 'ROLE_Admin'"class="nav-item">
+							<a data-toggle="collapse" href="#tables">
+								<i class="pi pi-slack"></i>
+								<p>gestion des labo de test</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+										<a href="tables/tables.html">
+											<i class="pi pi-list"></i>
+											<span class="sub-item">List des tables de test</span>
+										</a>
+										<a href="#">
+											<i class="pi pi-plus-circle"></i>
+											<span class="sub-item">ajouter une etape de test</span>
+										</a>
+								</ul>
+							</div>
+						</li>
+						<li *ngIf="roleuser === 'ROLE_Assistant'" class="nav-item">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-th-list"></i>
+								<p>Gestion des rapports</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+										<a href="sidebar-style-1.html">
+											<i class="pi pi-list"></i>
+											<span class="sub-item">List un rapport</span>
+										</a>
+										<a href="overlay-sidebar.html">
+											<i class="pi pi-plus-circle"></i>
+											<span class="sub-item">ajouter un rapport</span>
+										</a>
+								</ul>
+							</div>
+						</li>
+						<li *ngIf="roleuser === 'ROLE_Assistant'" class="nav-item">
+							<a data-toggle="collapse" href="#forms">
+								<i class="fas fa-pen-square"></i>
+								<p>Gestion des pièces</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="forms">
+								<ul class="nav nav-collapse">
+
+										<a href="forms/forms.html">
+											<i class="pi pi-list"></i>
+											<span class="sub-item">List pièce</span>
+										</a>
+										<a href="forms/forms.html">
+											<i class="pi pi-plus-circle"></i>
+											<span class="sub-item">ajouter une pièce</span>
+										</a>
+								</ul>
+							</div>
+						</li>
+						
+						
+						
+						<li *ngIf="roleuser === 'ROLE_Admin'" class="nav-item">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-th-list"></i>
+								<p>Modele</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									
+										<a href="sidebar-style-1.html">
+											<i class="pi pi-list"></i>
+											<span class="sub-item">List modele</span>
+										</a>
+									
+									
+										<a href="overlay-sidebar.html">
+											<i class="pi pi-plus-circle"></i>
+											<span class="sub-item">ajouter modele</span>
+										</a>
+									
+									
+								</ul>
+							</div>
+						</li>
 						<br>
 						
-						<li class="nav-item">
+						
+						<li *ngIf="roleuser === 'ROLE_Super Admin'" class="nav-item">
 							<a data-toggle="collapse" href="#subnav2">
 								<i class="fas fa-bars"></i>
 								<p>gestion des roles</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="subnav2">
+							<div class="collapse" id="sidebarLayouts">
 								<ul class="nav nav-collapse">
 									<li>
 										<a data-toggle="collapse" href="/listrole" class="nav-link" routerLink="listrole">
@@ -447,10 +472,13 @@
 										</a>
 										
 									</li>
+									
+									
 								
 								
 								</ul>
 							</div>
+							
 						</li>
 				
 					</ul>
@@ -473,75 +501,7 @@
 			</footer>
 		</div>
 		<!-- Custom template | don't include it in your project! -->
-		<div class="custom-template">
-			<div class="title">Settings</div>
-			<div class="custom-content">
-				<div class="switcher">
-					<div class="switch-block">
-						<h4>Logo Header</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeLogoHeaderColor" data-color="dark"></button>
-							<button type="button" class="selected changeLogoHeaderColor" data-color="blue"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br/>
-							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Navbar Header</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeTopBarColor" data-color="dark"></button>
-							<button type="button" class="changeTopBarColor" data-color="blue"></button>
-							<button type="button" class="changeTopBarColor" data-color="purple"></button>
-							<button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-							<button type="button" class="changeTopBarColor" data-color="green"></button>
-							<button type="button" class="changeTopBarColor" data-color="orange"></button>
-							<button type="button" class="changeTopBarColor" data-color="red"></button>
-							<button type="button" class="changeTopBarColor" data-color="white"></button>
-							<br/>
-							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
-							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
-							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
-							<button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-							<button type="button" class="changeTopBarColor" data-color="green2"></button>
-							<button type="button" class="changeTopBarColor" data-color="orange2"></button>
-							<button type="button" class="changeTopBarColor" data-color="red2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Sidebar</h4>
-						<div class="btnSwitch">
-							<button type="button" class="selected changeSideBarColor" data-color="white"></button>
-							<button type="button" class="changeSideBarColor" data-color="dark"></button>
-							<button type="button" class="changeSideBarColor" data-color="dark2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Background</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeBackgroundColor" data-color="bg2"></button>
-							<button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
-							<button type="button" class="changeBackgroundColor" data-color="bg3"></button>
-							<button type="button" class="changeBackgroundColor" data-color="dark"></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="custom-toggle">
-				<i class="flaticon-settings"></i>
-			</div>
-		</div>
+
 		<!-- End Custom template -->
 
 	<!--   Core JS Files   -->

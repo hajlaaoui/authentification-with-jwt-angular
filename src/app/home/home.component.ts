@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   content?: string;
   isLoggedIn = false;
   username : string | any;
+  roleuser? :string
   constructor(private userService: UserService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
@@ -27,9 +28,16 @@ export class HomeComponent implements OnInit {
 
     this.usermanagementservice.getByUsername().subscribe(data => {
       this.username = data.username
-      console.log(this.username);
+      this.roleuser=data.authorities[0].authority
+      console.log(this.roleuser);
+   
       
      });
+    //  this.usermanagementservice.getCurrentRole().subscribe(data => {
+        
+    //   this.roleuser = data
+    //   console.log(this.roleuser)
+    // })
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     console.log(this.isLoggedIn);
     
